@@ -13,12 +13,9 @@ namespace MM
         [STAThread]
         static void Main()
         {
-
-           // Application.ApplicationExit += new EventHandler(EM);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            EM EM = new EM();
-            Application.Run(EM);
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new EM());
         }
     }
 }

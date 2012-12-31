@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace MM
 {
@@ -74,27 +75,38 @@ namespace MM
             {
                 con = new SqlConnection();
                 con.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\uday\Documents\Visual Studio 2008\Projects\MM\MM\MM.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
-                string query_year_credit = @"SELECT * FROM MM WHERE YEAR(DATE) = '" + dateTime.Year + "' and [CREDIT/DEBIT] = 'CREDIT'";
-                string query_month_credit = @"SELECT * FROM MM WHERE MONTH(DATE) = '" + dateTime.Month + "' and [CREDIT/DEBIT] = 'CREDIT'";
-                string query_day_credit = @"SELECT * FROM MM WHERE DATE = '" + dateTime + "' and [CREDIT/DEBIT] = 'CREDIT'";
-                string query_year_debit = @"SELECT * FROM MM WHERE YEAR(DATE) = '" + dateTime.Year + "' and [CREDIT/DEBIT] = 'DEBIT'";
-                string query_month_debit = @"SELECT * FROM MM WHERE MONTH(DATE) = '" + dateTime.Month + "' and [CREDIT/DEBIT] = 'DEBIT'";
-                string query_day_debit = @"SELECT * FROM MM WHERE DATE = '" + dateTime + "' and [CREDIT/DEBIT] = 'DEBIT'";
+                string query_year_credit = @"SELECT * FROM MM WHERE YEAR(DATE) = '" + dateTime.Year + "' and [CREDIT/DEBIT] = 'INCOME'";
+                string query_month_credit = @"SELECT * FROM MM WHERE MONTH(DATE) = '" + dateTime.Month + "' and [CREDIT/DEBIT] = 'INCOME'";
+                string query_day_credit = @"SELECT * FROM MM WHERE DATE = '" + dateTime + "' and [CREDIT/DEBIT] = 'INCOME'";
+                string query_year_debit = @"SELECT * FROM MM WHERE YEAR(DATE) = '" + dateTime.Year + "' and [CREDIT/DEBIT] = 'EXPENSE'";
+                string query_month_debit = @"SELECT * FROM MM WHERE MONTH(DATE) = '" + dateTime.Month + "' and [CREDIT/DEBIT] = 'EXPENSE'";
+                string query_day_debit = @"SELECT * FROM MM WHERE DATE = '" + dateTime + "' and [CREDIT/DEBIT] = 'EXPENSE'";
+                string query_year_saving = @"SELECT * FROM MM WHERE YEAR(DATE) = '" + dateTime.Year + "' and [CREDIT/DEBIT] = 'SAVINGS'";
+                string query_month_saving = @"SELECT * FROM MM WHERE MONTH(DATE) = '" + dateTime.Month + "' and [CREDIT/DEBIT] = 'SAVINGS'";
+                string query_day_saving = @"SELECT * FROM MM WHERE DATE = '" + dateTime + "' and [CREDIT/DEBIT] = 'SAVINGS'";
+     
 
-                this.month_credit.Clear();
-                this.month_debit.Clear();
-                this.year_credit.Clear();
-                this.year_debit.Clear();
                 this.day_credit.Clear();
+                this.month_credit.Clear();
+                this.year_credit.Clear();
+
                 this.day_debit.Clear();
+                this.month_debit.Clear();
+                this.year_debit.Clear();
+                
+                this.day_saving.Clear();
+                this.month_saving.Clear();
+                this.year_saving.Clear();
 
                 object y_d = getstat(query_year_debit,con);
-                object m_d = getstat(query_month_debit, con);
-                object d_d = getstat(query_day_debit, con);
-                object y_c = getstat(query_year_credit ,con);
+                object m_d = getstat(query_month_debit,con);
+                object d_d = getstat(query_day_debit,con);
+                object y_c = getstat(query_year_credit,con);
                 object m_c = getstat(query_month_credit,con);
-                object d_c = getstat(query_day_credit ,con);
-
+                object d_c = getstat(query_day_credit,con);
+                object y_s = getstat(query_year_saving,con);
+                object m_s = getstat(query_month_saving,con);
+                object d_s = getstat(query_day_saving,con);
 
                 this.month_credit.AppendText(m_c.ToString());
                 this.month_debit.AppendText(m_d.ToString());
@@ -102,6 +114,10 @@ namespace MM
                 this.year_debit.AppendText(y_d.ToString());
                 this.day_credit.AppendText(d_c.ToString());
                 this.day_debit.AppendText(d_d.ToString());
+                this.day_saving.AppendText(d_s.ToString());
+                this.month_saving.AppendText(m_s.ToString());
+                this.year_saving.AppendText(y_s.ToString());
+
 
             }
             catch (Exception ex)
@@ -360,6 +376,21 @@ namespace MM
                 if (unsaved == true)
                     unsaved = false;
             }
+        }
+
+        private void aUTHORToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process myProcess = new Process();
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName = "http://www.facebook.com/uday.L.reddy";
+                myProcess.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            } 
         }
     }
 }

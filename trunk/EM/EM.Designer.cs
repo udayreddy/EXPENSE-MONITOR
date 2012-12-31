@@ -35,7 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EM));
             this.CALENDAR = new System.Windows.Forms.MonthCalendar();
-            this.mMDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DAY = new System.Windows.Forms.Label();
             this.CREDIT = new System.Windows.Forms.Label();
             this.YEAR = new System.Windows.Forms.Label();
@@ -48,7 +47,6 @@
             this.SAVE = new System.Windows.Forms.Button();
             this.CANCEL = new System.Windows.Forms.Button();
             this.day_credit = new System.Windows.Forms.TextBox();
-            this.day_debit = new System.Windows.Forms.TextBox();
             this.year_debit = new System.Windows.Forms.TextBox();
             this.year_credit = new System.Windows.Forms.TextBox();
             this.month_debit = new System.Windows.Forms.TextBox();
@@ -62,15 +60,23 @@
             this.vIEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gRAPHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gRIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.mMDataSetBindingSource)).BeginInit();
+            this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.month_saving = new System.Windows.Forms.TextBox();
+            this.year_saving = new System.Windows.Forms.TextBox();
+            this.day_saving = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.mMDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.day_debit = new System.Windows.Forms.TextBox();
+            this.aUTHORToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.CashGrid)).BeginInit();
             this.MENU.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mMDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // CALENDAR
             // 
             this.CALENDAR.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CALENDAR.Location = new System.Drawing.Point(33, 40);
+            this.CALENDAR.Location = new System.Drawing.Point(61, 40);
             this.CALENDAR.Margin = new System.Windows.Forms.Padding(10);
             this.CALENDAR.Name = "CALENDAR";
             this.CALENDAR.TabIndex = 0;
@@ -87,7 +93,7 @@
             // CREDIT
             // 
             this.CREDIT.AutoSize = true;
-            this.CREDIT.Location = new System.Drawing.Point(87, 210);
+            this.CREDIT.Location = new System.Drawing.Point(74, 212);
             this.CREDIT.Name = "CREDIT";
             this.CREDIT.Size = new System.Drawing.Size(53, 15);
             this.CREDIT.TabIndex = 4;
@@ -114,7 +120,7 @@
             // DEBIT
             // 
             this.DEBIT.AutoSize = true;
-            this.DEBIT.Location = new System.Drawing.Point(208, 213);
+            this.DEBIT.Location = new System.Drawing.Point(161, 212);
             this.DEBIT.Name = "DEBIT";
             this.DEBIT.Size = new System.Drawing.Size(44, 15);
             this.DEBIT.TabIndex = 8;
@@ -123,9 +129,11 @@
             // CashGrid
             // 
             this.CashGrid.AllowUserToOrderColumns = true;
-            this.CashGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.CashGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.CashGrid.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
+            this.CashGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.CashGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CashGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MONEY,
@@ -133,7 +141,7 @@
             this.CREDIT_DEBIT});
             this.CashGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.CashGrid.GridColor = System.Drawing.Color.LightSlateGray;
-            this.CashGrid.Location = new System.Drawing.Point(287, 40);
+            this.CashGrid.Location = new System.Drawing.Point(318, 40);
             this.CashGrid.Name = "CashGrid";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -146,7 +154,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.CashGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.CashGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CashGrid.Size = new System.Drawing.Size(614, 482);
+            this.CashGrid.Size = new System.Drawing.Size(583, 482);
             this.CashGrid.TabIndex = 9;
             // 
             // MONEY
@@ -175,12 +183,14 @@
             this.CREDIT_DEBIT.DefaultCellStyle = dataGridViewCellStyle3;
             this.CREDIT_DEBIT.HeaderText = "CREDIT/DEBIT";
             this.CREDIT_DEBIT.Items.AddRange(new object[] {
-            "CREDIT",
-            "DEBIT"});
+            "INCOME",
+            "EXPENSE",
+            "SAVINGS"});
             this.CREDIT_DEBIT.Name = "CREDIT_DEBIT";
             // 
             // SAVE
             // 
+            this.SAVE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SAVE.Location = new System.Drawing.Point(568, 539);
             this.SAVE.Name = "SAVE";
             this.SAVE.Size = new System.Drawing.Size(126, 28);
@@ -191,6 +201,7 @@
             // 
             // CANCEL
             // 
+            this.CANCEL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CANCEL.Location = new System.Drawing.Point(734, 539);
             this.CANCEL.Name = "CANCEL";
             this.CANCEL.Size = new System.Drawing.Size(115, 28);
@@ -207,29 +218,18 @@
             this.day_credit.Location = new System.Drawing.Point(61, 238);
             this.day_credit.Name = "day_credit";
             this.day_credit.ReadOnly = true;
-            this.day_credit.Size = new System.Drawing.Size(98, 21);
+            this.day_credit.Size = new System.Drawing.Size(79, 21);
             this.day_credit.TabIndex = 12;
-            // 
-            // day_debit
-            // 
-            this.day_debit.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.day_debit.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.day_debit.ForeColor = System.Drawing.Color.Red;
-            this.day_debit.Location = new System.Drawing.Point(174, 238);
-            this.day_debit.Name = "day_debit";
-            this.day_debit.ReadOnly = true;
-            this.day_debit.Size = new System.Drawing.Size(107, 21);
-            this.day_debit.TabIndex = 15;
             // 
             // year_debit
             // 
             this.year_debit.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.year_debit.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.year_debit.ForeColor = System.Drawing.Color.Red;
-            this.year_debit.Location = new System.Drawing.Point(174, 325);
+            this.year_debit.Location = new System.Drawing.Point(146, 325);
             this.year_debit.Name = "year_debit";
             this.year_debit.ReadOnly = true;
-            this.year_debit.Size = new System.Drawing.Size(107, 21);
+            this.year_debit.Size = new System.Drawing.Size(77, 21);
             this.year_debit.TabIndex = 16;
             // 
             // year_credit
@@ -240,7 +240,7 @@
             this.year_credit.Location = new System.Drawing.Point(61, 325);
             this.year_credit.Name = "year_credit";
             this.year_credit.ReadOnly = true;
-            this.year_credit.Size = new System.Drawing.Size(98, 21);
+            this.year_credit.Size = new System.Drawing.Size(79, 21);
             this.year_credit.TabIndex = 17;
             // 
             // month_debit
@@ -248,10 +248,10 @@
             this.month_debit.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.month_debit.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.month_debit.ForeColor = System.Drawing.Color.Red;
-            this.month_debit.Location = new System.Drawing.Point(174, 279);
+            this.month_debit.Location = new System.Drawing.Point(146, 279);
             this.month_debit.Name = "month_debit";
             this.month_debit.ReadOnly = true;
-            this.month_debit.Size = new System.Drawing.Size(107, 21);
+            this.month_debit.Size = new System.Drawing.Size(77, 21);
             this.month_debit.TabIndex = 18;
             // 
             // month_credit
@@ -262,7 +262,7 @@
             this.month_credit.Location = new System.Drawing.Point(61, 279);
             this.month_credit.Name = "month_credit";
             this.month_credit.ReadOnly = true;
-            this.month_credit.Size = new System.Drawing.Size(98, 21);
+            this.month_credit.Size = new System.Drawing.Size(79, 21);
             this.month_credit.TabIndex = 19;
             // 
             // MENU
@@ -271,7 +271,8 @@
             this.MENU.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MENU.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fILEToolStripMenuItem,
-            this.vIEWToolStripMenuItem});
+            this.vIEWToolStripMenuItem,
+            this.aBOUTToolStripMenuItem});
             this.MENU.Location = new System.Drawing.Point(0, 0);
             this.MENU.Name = "MENU";
             this.MENU.Size = new System.Drawing.Size(919, 24);
@@ -342,11 +343,83 @@
             this.gRIDToolStripMenuItem.Text = "GRID";
             this.gRIDToolStripMenuItem.Click += new System.EventHandler(this.gRIDToolStripMenuItem_Click);
             // 
+            // aBOUTToolStripMenuItem
+            // 
+            this.aBOUTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aUTHORToolStripMenuItem});
+            this.aBOUTToolStripMenuItem.Name = "aBOUTToolStripMenuItem";
+            this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.aBOUTToolStripMenuItem.Text = "ABOUT";
+            // 
+            // month_saving
+            // 
+            this.month_saving.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.month_saving.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.month_saving.ForeColor = System.Drawing.Color.MediumBlue;
+            this.month_saving.Location = new System.Drawing.Point(235, 279);
+            this.month_saving.Name = "month_saving";
+            this.month_saving.ReadOnly = true;
+            this.month_saving.Size = new System.Drawing.Size(77, 21);
+            this.month_saving.TabIndex = 25;
+            // 
+            // year_saving
+            // 
+            this.year_saving.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.year_saving.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.year_saving.ForeColor = System.Drawing.Color.MediumBlue;
+            this.year_saving.Location = new System.Drawing.Point(235, 325);
+            this.year_saving.Name = "year_saving";
+            this.year_saving.ReadOnly = true;
+            this.year_saving.Size = new System.Drawing.Size(77, 21);
+            this.year_saving.TabIndex = 24;
+            // 
+            // day_saving
+            // 
+            this.day_saving.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.day_saving.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.day_saving.ForeColor = System.Drawing.Color.MediumBlue;
+            this.day_saving.Location = new System.Drawing.Point(235, 238);
+            this.day_saving.Name = "day_saving";
+            this.day_saving.ReadOnly = true;
+            this.day_saving.Size = new System.Drawing.Size(77, 21);
+            this.day_saving.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(242, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "SAVINGS";
+            // 
+            // day_debit
+            // 
+            this.day_debit.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.day_debit.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.day_debit.ForeColor = System.Drawing.Color.Red;
+            this.day_debit.Location = new System.Drawing.Point(146, 238);
+            this.day_debit.Name = "day_debit";
+            this.day_debit.ReadOnly = true;
+            this.day_debit.Size = new System.Drawing.Size(77, 21);
+            this.day_debit.TabIndex = 15;
+            // 
+            // aUTHORToolStripMenuItem
+            // 
+            this.aUTHORToolStripMenuItem.Name = "aUTHORToolStripMenuItem";
+            this.aUTHORToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aUTHORToolStripMenuItem.Text = "AUTHOR";
+            this.aUTHORToolStripMenuItem.Click += new System.EventHandler(this.aUTHORToolStripMenuItem_Click);
+            // 
             // EM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 579);
+            this.Controls.Add(this.month_saving);
+            this.Controls.Add(this.year_saving);
+            this.Controls.Add(this.day_saving);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.month_credit);
             this.Controls.Add(this.month_debit);
             this.Controls.Add(this.year_credit);
@@ -364,15 +437,15 @@
             this.Controls.Add(this.CALENDAR);
             this.Controls.Add(this.MENU);
             this.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MENU;
             this.Name = "EM";
-            this.Text = "EXPENSE MONITOR :: by UDAY REDDY (l.udayreddy@gmail.com)";
-            ((System.ComponentModel.ISupportInitialize)(this.mMDataSetBindingSource)).EndInit();
+            this.Text = "EXPENSE MONITOR";
             ((System.ComponentModel.ISupportInitialize)(this.CashGrid)).EndInit();
             this.MENU.ResumeLayout(false);
             this.MENU.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mMDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,7 +464,6 @@
         private System.Windows.Forms.Button SAVE;
         private System.Windows.Forms.Button CANCEL;
         private System.Windows.Forms.TextBox day_credit;
-        private System.Windows.Forms.TextBox day_debit;
         private System.Windows.Forms.TextBox year_debit;
         private System.Windows.Forms.TextBox year_credit;
         private System.Windows.Forms.TextBox month_debit;
@@ -404,10 +476,17 @@
         private System.Windows.Forms.ToolStripMenuItem eXITToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gRAPHToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gRIDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cLEARALLToolStripMenuItem;
+        private System.Windows.Forms.TextBox month_saving;
+        private System.Windows.Forms.TextBox year_saving;
+        private System.Windows.Forms.TextBox day_saving;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MONEY;
         private System.Windows.Forms.DataGridViewTextBoxColumn REASON;
         private System.Windows.Forms.DataGridViewComboBoxColumn CREDIT_DEBIT;
-        private System.Windows.Forms.ToolStripMenuItem cLEARALLToolStripMenuItem;
+        private System.Windows.Forms.TextBox day_debit;
+        private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aUTHORToolStripMenuItem;
     }
 }
 
